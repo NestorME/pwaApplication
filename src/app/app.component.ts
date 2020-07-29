@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
-import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { NotesService } from "../services/notes.service";
 import { AuthService } from 'src/services/auth.service';
@@ -23,12 +22,8 @@ export class AppComponent implements OnInit {
     public messagingservice: MessagingService) {
     this.notesService.getNotes().valueChanges().subscribe((fbnotes) => {
       this.notes = fbnotes;
-      console.log(this.notes);
-
     });
-    this.messagingservice.getPermission();
-    this.messagingservice.receiveMessage();
-    this.message = this.messagingservice.currentMessage;
+    
   }
   ngOnInit(): void {
     if (this.swUpdate.isEnabled) {
@@ -38,7 +33,11 @@ export class AppComponent implements OnInit {
         }
       });
     }
+    this.messagingservice.getPermission();
+    this.messagingservice.receiveMessage();
+    this.message = this.messagingservice.currentmessage;
   }
+  
   saveNote(): void {
     if (!this.note.id) {
       this.note.id = Date.now();

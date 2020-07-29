@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { NotesService } from 'src/services/notes.service';
 import { AuthService } from 'src/services/auth.service';
 import { MessagingService } from 'src/services/messaging.service';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
 
 
 const firebaqseConfig:any = {
@@ -53,6 +54,7 @@ const firebaqseConfig:any = {
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    AngularFireMessagingModule,
     MatOptionModule,
     MatSelectModule,
     MatListModule,
@@ -65,7 +67,7 @@ const firebaqseConfig:any = {
   providers: [
     NotesService,
     AuthService, 
-    MessagingService
+    MessagingService    
   ],
   bootstrap: [AppComponent]
 })
